@@ -27,6 +27,13 @@ const userSchema = new mongooose.Schema({
     }
 })
 
+// Middelware 
+// const middleware = (req,res, next) => {
+//     console.log(`Hello my Middleware`);
+//     next();
+// }
+
+
 const User = mongooose.model('USER', userSchema);
 
 module.exports = User;
