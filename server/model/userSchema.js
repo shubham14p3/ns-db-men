@@ -1,0 +1,39 @@
+const mongooose = require('mongoose');
+
+const userSchema = new mongooose.Schema({
+    name: {
+        type: String,
+        required:true
+    },
+    email: {
+         type: String,
+        required:true
+    },
+    phone: {
+        type: Number,
+        required:true
+    },
+    work: {
+         type: String,
+        required:true
+    },
+    password: {
+         type: String,
+        required:true
+    },
+    cpassword: {
+         type: String,
+        required:true
+    }
+})
+
+// Middelware 
+// const middleware = (req,res, next) => {
+//     console.log(`Hello my Middleware`);
+//     next();
+// }
+
+
+const User = mongooose.model('USER', userSchema);
+
+module.exports = User;
