@@ -1,4 +1,5 @@
 const express = require('express');
+const UserSchema = require('../model/userSchema');
 const router = express.Router();
 
 router.get('/', (req, res) => {
@@ -6,9 +7,12 @@ router.get('/', (req, res) => {
 });
 
 router.post('/register', (req, res) => {
-    console.log(req.body);
-    res.json({ message: req.body });
+    // console.log(req.body);
+    // res.json({ message: req.body });
     // res.send("mera register page");
+        const product = await UserSchema.create(req.body);
+        res.status(201).json({ status: true,message: req.body, product });
+      
 });
 
 router.get('/about', (req, res) => {
