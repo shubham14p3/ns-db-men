@@ -29,6 +29,8 @@ To get a local copy up and running follow these simple example steps.
 ### Setup
 heroku login
 git push heroku main
+git remote -v
+heroku git:remote ns-db-2022.git
 ### Install
 
 ### Usage
