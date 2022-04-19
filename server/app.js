@@ -20,3 +20,4 @@ app.use(require('./router/auth'));
 app.listen(PORT, () => {
     console.log(`server is runnig at port no ${PORT}`);
 })
+
