@@ -32,7 +32,7 @@ git push heroku main
 git remote -v
 heroku git:remote ns-db-2022.git
 ### Install
-
+heroku create -a ns-db-2022
 ### Usage
 
 ### Run tests

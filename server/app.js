@@ -12,7 +12,6 @@ const mongodb= require('./db/conn');
 
 mongodb();// Connecting DB
 
-
 app.use(require('./router/auth'));
 
 
