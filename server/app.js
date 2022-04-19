@@ -1,7 +1,9 @@
 const dotenv = require("dotenv");
 const express = require('express');
-const app = express();
+var cors = require('cors')
+var app = express();
 
+app.use(cors());
 dotenv.config({path:'D:/Company Work/Nise-Comport/ns-db-men/server'+'/config.env'});//IMporting ENV
 if(process.env.VAR!=="PRODUCTION"){
 const PORT = process.env.PORT|| 5000;
