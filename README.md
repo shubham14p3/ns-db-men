@@ -27,7 +27,8 @@ To get a local copy up and running follow these simple example steps.
 ### Prerequisites
 
 ### Setup
-
+heroku login
+git push heroku main
 ### Install
 
 ### Usage
