@@ -4,7 +4,6 @@
 
 > Description the project.
 
-
 ## Built With
 
 - Major languages
@@ -15,31 +14,31 @@
 
 [Live Demo Link](https://livedemo.com)
 
-
 ## Getting Started
 
 **This is an example of how you may give instructions on setting up your project locally.**
 **Modify this file to match your project, remove sections that don't apply. For example: delete the testing section if the currect project doesn't require testing.**
-
 
 To get a local copy up and running follow these simple example steps.
 
 ### Prerequisites
 
 ### Setup
+
 heroku login
 git push heroku main
 git remote -v
 heroku git:remote ns-db-2022.git
+
 ### Install
+
 heroku create -a ns-db-2022
+
 ### Usage
 
 ### Run tests
 
 ### Deployment
-
-
 
 ## Authors
 
