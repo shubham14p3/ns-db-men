@@ -1,14 +1,17 @@
+
 const jwt = require("jsonwebtoken");
 const bcrypt = require("bcrypt");
 const express = require("express");
+const UserSchema = require('../model/userSchema');
 const router = express.Router();
 
 require("../db/conn");
 const User = require("../model/userSchema");
 
+
 router.get("/", (req, res) => {
   res.send(`Hello world from the server rotuer js`);
-});
+
 
 router.post("/register", async (req, res) => {
   const { name, email, phone, work, password, cpassword } = req.body;

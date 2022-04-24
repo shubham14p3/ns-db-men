@@ -2,7 +2,7 @@ const mongooose = require("mongoose");
 const bcrypt = require("bcrypt");
 const jwt = require("jsonwebtoken");
 const timespan = require("jsonwebtoken/lib/timespan");
-const userSchema = new mongooose.Schema({
+
   name: {
     type: String,
     required: true,
@@ -36,6 +36,7 @@ const userSchema = new mongooose.Schema({
     },
   ],
 });
+
 
 // Middelware
 // const middleware = (req,res, next) => {
