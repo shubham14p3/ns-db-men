@@ -14,7 +14,8 @@ router.get("/", (req, res) => {
 router.post("/register", async (req, res) => {
   const { name, email, phone, work, password, cpassword } = req.body;
 
-  if (!name || !email || !phone || !work || !password || !cpassword) {
+  // if (!name || !email || !phone || !work || !password || !cpassword) {
+  if (!name || !email || !password || !cpassword) {
     return res.status(422).json({ error: "Wrong Data Kindly fill it." });
   }
   try {
