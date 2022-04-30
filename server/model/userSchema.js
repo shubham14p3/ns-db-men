@@ -1,5 +1,5 @@
 const mongooose = require("mongoose");
-const bcrypt = require("bcrypt");
+const bcrypt = require("bcryptjs");
 const jwt = require("jsonwebtoken");
 const timespan = require("jsonwebtoken/lib/timespan");
 const userSchema = new mongooose.Schema({
