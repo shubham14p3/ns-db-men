@@ -1,7 +1,6 @@
 const jwt = require("jsonwebtoken");
-const bcrypt = require("bcryptjs");
+const bcrypt = require("bcrypt");
 const express = require("express");
-const UserSchema = require("../model/userSchema");
 const router = express.Router();
 
 require("../db/conn");
@@ -13,7 +12,6 @@ router.get("/", (req, res) => {
 
 router.post("/register", async (req, res) => {
   const { name, email, phone, work, password, cpassword } = req.body;
-
   // if (!name || !email || !phone || !work || !password || !cpassword) {
   if (!name || !email || !password || !cpassword) {
     return res.status(422).json({ error: "Wrong Data Kindly fill it." });
@@ -40,19 +38,6 @@ router.get("/about", (req, res) => {
   res.send(`Hello About world from the server`);
 });
 
-router.get("/signin", async (req, res) => {
-  try {
-    const { email, password } = req.body;
-    if (!email || !password) {
-      return res.status(400).json({ error: "Please fill the field Data" });
-    }
-    const userLogin = await User.findOne({ email: email });
-  } catch (err) {
-    console.log(err);
-  }
-  res.send(`Hello Login world from the server`);
-});
-
 router.get("/about", (req, res) => {
   res.send(`Hello About world from the server`);
 });
@@ -64,7 +49,6 @@ router.get("/contact", (req, res) => {
 router.get("/signin", async (req, res) => {
   try {
     const { email, password } = req.body;
-
     if (!email || !password) {
       return res.status(400).json({ error: "Please fill the data" });
     }
