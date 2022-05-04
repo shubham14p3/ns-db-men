@@ -18,7 +18,7 @@ router.post("/register", async (req, res) => {
     return res.status(422).json({ error: "Wrong Data Kindly fill it." });
   }
   try {
-    let token;
+    
     const userExist = await User.findOne({ email: email });
 
     if (userExist) {
@@ -27,12 +27,7 @@ router.post("/register", async (req, res) => {
       return res.status(422).json({ error: "Password is not matching" });
     } else {
       const user = new User({ name, email, phone, work, password, cpassword });
-      token = await user.generateAuthToken();
-
-      res.cookie("nise-comport", token, {
-        expires: new Date(Date.now() + 2589200000),
-        httpOnly: true,
-      });
+      
       await user.save();
       res.status(201).json({ message: "User Register Successfully." });
     }
@@ -50,11 +45,13 @@ router.get("/about", (req, res) => {
 });
 
 router.get("/contact", (req, res) => {
+  res.cookie("nise-comport-contact", 'token');
   res.send(`Hello Contact world from the server`);
 });
 
 router.post("/signin", async (req, res) => {
   try {
+    let token;
     const { email, password } = req.body;
     if (!email || !password) {
       return res.status(400).json({ error: "Please fill the data" });
@@ -63,7 +60,12 @@ router.post("/signin", async (req, res) => {
     const userLogin = await User.findOne({ email: email });
     if (userLogin) {
       const isMatch = await bcrypt.compare(password, userLogin.password);
-
+     token = await userLogin.generateAuthToken();
+      res.cookie("nisecomport", token,
+      {
+        expires: new Date(Date.now() + 2589200000),
+        httpOnly: true,
+      });
       if (!isMatch) {
         res.status(400).json({ error: "Invalid Credentials!" });
       } else {
