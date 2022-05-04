@@ -46,7 +46,7 @@ router.get("/contact", (req, res) => {
   res.send(`Hello Contact world from the server`);
 });
 
-router.get("/signin", async (req, res) => {
+router.post("/signin", async (req, res) => {
   try {
     const { email, password } = req.body;
     if (!email || !password) {
