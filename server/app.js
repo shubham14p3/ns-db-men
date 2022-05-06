@@ -2,7 +2,6 @@ const dotenv = require("dotenv");
 const express = require("express");
 var cors = require("cors");
 var app = express();
-
 app.use(cors());
 dotenv.config({
   path: "D:/Company Work/Nise-Comport/ns-db-men/server" + "/config.env",
