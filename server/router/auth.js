@@ -3,6 +3,7 @@ const bcrypt = require("bcryptjs");
 const express = require("express");
 const router = express.Router();
 const cookieParser = require("cookie-parser");
+const sendToken = require("../utils/jwtToken");
 
 require("../db/conn");
 const User = require("../model/userSchema");
@@ -63,15 +64,23 @@ router.post("/signin", async (req, res) => {
     const userLogin = await User.findOne({ email: email });
     if (userLogin) {
       const isMatch = await bcrypt.compare(password, userLogin.password);
-      token = await userLogin.generateAuthToken();
-      res.cookie("nisecomport", token, {
-        expires: new Date(Date.now() + 2589200000),
-        httpOnly: true,
-      });
+      console.log("userLogin", userLogin);
       if (!isMatch) {
         res.status(400).json({ error: "Invalid Credentials!" });
       } else {
-        res.json({ message: "User Signed Successfully." });
+        // res.json({ message: "User Signed Successfully." });
+        // token = await userLogin.generateAuthToken();
+        // console.log(token);
+        // res
+        //   .cookie("nisecomport", token, {
+        //     expires: new Date(Date.now() + 2589200000),
+        //     httpOnly: true,
+        //   })
+        //   .json({
+        //     success: true,
+        //     token,
+        //   });
+        sendToken(userLogin, 201, res);
       }
     } else {
       res.status(400).json({ error: "Invalid Credentials!" });
