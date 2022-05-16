@@ -18,7 +18,6 @@ const Authenticate = async (req, res, next) => {
     next();
   } catch (error) {
     res.status(401).send("Unauthorised: token");
-    console.log(error);
   }
 };
 
