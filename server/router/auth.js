@@ -39,6 +39,7 @@ router.post("/register", async (req, res) => {
 
 router.get("/profile", (req, res) => {
   res.send(`Hello About world from the server`);
+  res.send(req.rootUser);
 });
 
 router.get("/about", (req, res) => {
