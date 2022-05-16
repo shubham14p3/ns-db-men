@@ -4,6 +4,7 @@ const express = require("express");
 const router = express.Router();
 const cookieParser = require("cookie-parser");
 const sendToken = require("../utils/jwtToken");
+const authenticate = require("../middleware/authenticate");
 
 require("../db/conn");
 const User = require("../model/userSchema");
@@ -36,7 +37,7 @@ router.post("/register", async (req, res) => {
   }
 });
 
-router.get("/about", (req, res) => {
+router.get("/profile", (req, res) => {
   res.send(`Hello About world from the server`);
 });
 
@@ -44,7 +45,7 @@ router.get("/about", (req, res) => {
   res.send(`Hello About world from the server`);
 });
 
-router.get("/contact", (req, res) => {
+router.get("/contact",authenticate, (req, res) => {
   res.cookie(`Contact`, `encrypted cookie string Value`);
   res.send("Cookie have been saved successfully");
 });
