@@ -37,8 +37,8 @@ router.post("/register", async (req, res) => {
   }
 });
 
-router.get("/profile", (req, res) => {
-  res.send(`Hello About world from the server`);
+router.get("/profile", authenticate, (req, res) => {
+  console.log(`Profile page`);
   res.send(req.rootUser);
 });
 
@@ -46,7 +46,7 @@ router.get("/about", (req, res) => {
   res.send(`Hello About world from the server`);
 });
 
-router.get("/contact",authenticate, (req, res) => {
+router.get("/contact", (req, res) => {
   res.cookie(`Contact`, `encrypted cookie string Value`);
   res.send("Cookie have been saved successfully");
 });
