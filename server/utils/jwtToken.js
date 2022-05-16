@@ -18,7 +18,7 @@ const sendToken = async (userLogin, statusCode, res) => {
     httpOnly: false,
   };
 
-  res.status(statusCode).cookie("jwttoken", token, options)
+  res.status(statusCode).cookie("token", token, options)
   .json({
     success: true,
     // userLogin,
