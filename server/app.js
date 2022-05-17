@@ -6,10 +6,7 @@ app.use(cors());
 dotenv.config({
   path: "D:/Company Work/Nise-Comport/ns-db-men/server" + "/config.env",
 }); 
-if (process.env.VAR !== "PRODUCTION") {
-  const PORT = process.env.PORT || 5000;
-}
-const PORT = process.env.PORT;
+const PORT = process.env.PORT || 5000;
 app.use(express.json());
 const mongodb = require("./db/conn");
 
